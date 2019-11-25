@@ -19,7 +19,8 @@ class Room
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Checklist", mappedBy="room")
+     * @ORM\Column(type="string", length=50)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $name;
 
