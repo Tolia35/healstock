@@ -4,10 +4,9 @@ namespace App\DataFixtures;
 
 use App\Entity\Room;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class RoomFixtures extends Fixture implements DependentFixtureInterface
+class RoomFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
@@ -28,17 +27,4 @@ class RoomFixtures extends Fixture implements DependentFixtureInterface
 
         $manager->flush();
     }
-    /**
-    * This method must return an array of fixtures classes
-    * on which the implementing class depends on
-    *
-    * @return array
-    */
-   public function getDependencies()
-   {
-       return [
-           ItemFixtures::class,
-           ChecklistFixtures::class
-       ];
-   }
 }

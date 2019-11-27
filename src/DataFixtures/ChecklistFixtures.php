@@ -15,7 +15,7 @@ class ChecklistFixtures extends Fixture implements DependentFixtureInterface
         $checklist1->setNurseName("Evelyne Colliot");
         $checklist1->setCreateTime(new \DateTime("2019-05-12"));
         $checklist1->addRoom($this->getReference("bloc1"));
-        $checklist1->setItem($this->getReference("item1"));
+        $checklist1->setItem($this->getReference("item1","item2"));
         $manager->persist($checklist1);
         $this->setReference("checklist1", $checklist1);
 
@@ -23,7 +23,7 @@ class ChecklistFixtures extends Fixture implements DependentFixtureInterface
         $checklist2->setNurseName("Patrick Charlard");
         $checklist2->setCreateTime(new \DateTime("2019-03-19"));
         $checklist2->addRoom($this->getReference("bloc2"));
-        $checklist2->setItem($this->getReference("item1","item2"));
+        $checklist2->setItem($this->getReference("item2","item3"));
         $manager->persist($checklist2);
         $this->setReference("checklist2", $checklist2);
 
@@ -31,7 +31,7 @@ class ChecklistFixtures extends Fixture implements DependentFixtureInterface
         $checklist3->setNurseName("Olivier Guillard");
         $checklist3->setCreateTime(new \DateTime("2019-03-23"));
         $checklist3->addRoom($this->getReference("bloc2"));
-        $checklist3->setItem($this->getReference("item2","item3"));
+        $checklist3->setItem($this->getReference("item2"));
         $manager->persist($checklist3);
         $this->setReference("checklist3", $checklist3);
 
