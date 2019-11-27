@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20191127142433 extends AbstractMigration
+final class Version20191127144342 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -25,7 +25,7 @@ final class Version20191127142433 extends AbstractMigration
         $this->addSql('CREATE TABLE checklist (id INT AUTO_INCREMENT NOT NULL, room_id INT NOT NULL, nurse_name VARCHAR(255) NOT NULL, create_time DATETIME NOT NULL, INDEX IDX_5C696D2F54177093 (room_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE checklistitem (id INT AUTO_INCREMENT NOT NULL, checklist_id INT NOT NULL, item_id INT NOT NULL, is_closed TINYINT(1) NOT NULL, INDEX IDX_71A70F34B16D08A7 (checklist_id), INDEX IDX_71A70F34126F525E (item_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE item (id INT AUTO_INCREMENT NOT NULL, reference VARCHAR(255) DEFAULT NULL, information VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE room (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(50) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE room (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE roomitem (id INT AUTO_INCREMENT NOT NULL, room_id INT NOT NULL, item_id INT NOT NULL, quantity NUMERIC(10, 0) NOT NULL, INDEX IDX_50F681F954177093 (room_id), INDEX IDX_50F681F9126F525E (item_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, create_time DATETIME NOT NULL, UNIQUE INDEX UNIQ_8D93D649F85E0677 (username), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE checklist ADD CONSTRAINT FK_5C696D2F54177093 FOREIGN KEY (room_id) REFERENCES room (id)');

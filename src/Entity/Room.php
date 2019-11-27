@@ -15,8 +15,7 @@ class Room
      */
     private $id;
     /**
-     * @ORM\Column(type="string", length=50)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
     /**
@@ -38,6 +37,11 @@ class Room
     public function getName(): Collection
     {
         return $this->name;
+    }
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
+        return $this;
     }
     public function addName(Checklist $name): self
     {
