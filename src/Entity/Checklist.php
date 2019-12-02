@@ -92,4 +92,13 @@ class Checklist
         }
         return $this;
     }
+
+    public function isClosed() {
+        foreach ($this->getChecklistitems() as $item) {
+            if (!$item->getIsClosed()) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

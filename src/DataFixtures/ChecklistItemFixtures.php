@@ -1,7 +1,6 @@
 <?php
 
 namespace App\DataFixtures;
-
 use App\Entity\Checklistitem;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -13,13 +12,15 @@ class ChecklistItemFixtures extends Fixture implements DependentFixtureInterface
     {
         $checklistitem1 = new Checklistitem();
         $checklistitem1->setIsClosed(false);
+        $checklistitem1->setChecklist($this->getReference("checklist1"));
+        $checklistitem1->setItem($this->getReference("item1"));
         $manager->persist($checklistitem1);
-        $this->setReference("checklistitem1", $checklistitem1);
 
         $checklistitem2 = new Checklistitem();
-        $checklistitem2->setIsClosed(true);
+        $checklistitem2->setIsClosed(false);
+        $checklistitem2->setChecklist($this->getReference("checklist1"));
+        $checklistitem2->setItem($this->getReference("item2"));
         $manager->persist($checklistitem2);
-        $this->setReference("checklistitem2", $checklistitem2);
 
         $manager->flush();
     }
@@ -32,7 +33,7 @@ class ChecklistItemFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            RoomFixtures::class,
+            ChecklistFixtures::class,
             ItemFixtures::class
         ];
     }

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ checklist.id }}{% endblock %}
+
+{% block body %}
+
+    <h1>{{ checklist.id }}</h1>
+    <p> Infirmière : {{ checklist.nursename }}
+        Date de création : { checklist.createdTime|date('d-m-y h-i-s') }}
+    </p>
+        //item loop TODO
+
+{% endblock %}
