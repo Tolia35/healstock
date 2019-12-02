@@ -5,16 +5,17 @@
     <title>{% block title %}Heal&Stock{% endblock %}</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+        <link rel="stylesheet" href="/assets/css/app.css">
     {% endblock %}
 
-    <div class="container" style="max-width: 100%;">
-    <div class="row">
-        <h2 style="padding: 12px">HEAL & STOCK</h2>
-        <img style="max-width: 15%; padding: 3px" src="../assets/images/logo.png" alt="Logo">
+    <div class="container">
+    <div class="row" style="justify-content: center;">
+        <h2  class="col-6" style="padding: 12px">HEAL & STOCK</h2>
+        <img class="col-5" style="max-width: 15%; padding: 3px" src="../assets/images/logo.png" alt="Logo">
     </div>
     </div>
 </head>
-<body style="background-color:#38b6ff">
+<body style="background-color:#38b6ff; justify-items: center">
 
 <main class="main-content">
     <section>
@@ -24,8 +25,8 @@
 
 <hr>
 <footer>
-    <nav class="container" style="background-color: lightgray; max-width: 100%;">
-        <ul class="row">
+    <nav class="container" style="background-color: lightgray; max-width: 100%; position: fixed; right: 0; top: 92%;">
+        <ul class="row" style="justify-content: space-evenly;">
             <a href="{{ path('homepage') }}"><img src="../node_modules/bootstrap-icons/icons/archive.svg" width="60" height="60" title="archive"></a></li>
             <a href="{{ path('checklist_new') }}"><img src="../node_modules/bootstrap-icons/icons/plus.svg" width="60" height="60" title="plus"></a></li>
             <a href="#"><img src="../node_modules/bootstrap-icons/icons/person-fill.svg" width="60" height="60" title="admin"></a></li>

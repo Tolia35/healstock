@@ -4,13 +4,19 @@
 {% block body %}
 
     <hr>
-
-    Ajouter une liste <a href="{{ path('checklist_new') }}">+</a>
+    <div class="container">
+    <div class="row" style="justify-content: center; padding-bottom: 20px">
+    <a style="color: #DDDDDD" href="{{ path('checklist_new') }}">Ajouter une liste <img src="../node_modules/bootstrap-icons/icons/plus.svg" width="40" height="40" title="plus"></a>
+    </div>
 
     <section>
+        <div class="container">
+            <div class="row" style="justify-content: center">
         {% for checklist in checklists %}
             {% include 'checklist/_thumbnail.html.twig' with { 'checklist': checklist } only %}
         {% endfor %}
+            </div>
+        </div>
     </section>
 
 {% endblock %}
