@@ -19,4 +19,19 @@ class ChecklistController extends AbstractController
             'checklist' => $checklist,
         ]);
     }
+    /**
+     * @Route("/checklist/new", name="checklist_new")
+     */
+    public function new(Request $request)
+    {
+        $checklist = new Checklist();
+        $form = $this->createForm(ChecklistType::class, $checklist);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            }
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($checklist);
+            $em->flush();
+            return $this->redirectToRoute("checklist_show");
+        }
 }

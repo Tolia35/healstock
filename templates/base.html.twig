@@ -2,23 +2,35 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Heal&Stock{% endblock %}</title>
     {% block stylesheets %}
-        {#{ encore_entry_link_tags('app') }#}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     {% endblock %}
+
+    <div class="container" style="max-width: 100%;">
+    <div class="row">
+        <h2 style="padding: 12px">HEAL & STOCK</h2>
+        <img style="max-width: 15%; padding: 3px" src="../assets/images/logo.png" alt="Logo">
+    </div>
+    </div>
 </head>
-<body>
-<hr>
+<body style="background-color:#38b6ff">
 
 <main class="main-content">
     <section>
-        {% block body %}<a href="{{ path('checklist_new') }}">Ajouter une liste</a>{% endblock %}
+        {% block body %}{% endblock %}
     </section>
 </main>
 
 <hr>
-
 <footer>
+    <nav class="container" style="background-color: lightgray; max-width: 100%;">
+        <ul class="row">
+            <a href="{{ path('homepage') }}"><img src="../node_modules/bootstrap-icons/icons/archive.svg" width="60" height="60" title="archive"></a></li>
+            <a href="{{ path('checklist_new') }}"><img src="../node_modules/bootstrap-icons/icons/plus.svg" width="60" height="60" title="plus"></a></li>
+            <a href="#"><img src="../node_modules/bootstrap-icons/icons/person-fill.svg" width="60" height="60" title="admin"></a></li>
+        </ul>
+    </nav>
 </footer>
 </body>
 </html>

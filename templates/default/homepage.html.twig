@@ -1,8 +1,11 @@
 {% extends "base.html.twig" %}
 
+
 {% block body %}
 
-    <h1>Page d'accueil</h1>
+    <hr>
+
+    Ajouter une liste <a href="{{ path('checklist_new') }}">+</a>
 
     <section>
         {% for checklist in checklists %}

@@ -1,5 +1,5 @@
 <article>
     <a href="{{ path('checklist_show') }}">
-        {{ checklist.id }}{{ checklist.nursename }} {{ checklist.createtime|date('d/m/Y') }}
+        N°{{ checklist.id }} Nom : {{ checklist.nursename }} Date : {{ checklist.createtime|date('d/m/Y') }}
     </a>
 </article>
