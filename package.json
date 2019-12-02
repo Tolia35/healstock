@@ -2,7 +2,9 @@
     "devDependencies": {
         "@symfony/webpack-encore": "^0.28.0",
         "core-js": "^3.0.0",
+        "node-sass": "^4.13.0",
         "regenerator-runtime": "^0.13.2",
+        "sass-loader": "^7.0.1",
         "webpack-notifier": "^1.6.0"
     },
     "license": "UNLICENSED",
@@ -15,6 +17,9 @@
     },
     "dependencies": {
         "bootstrap": "^4.4.1",
-        "bootstrap-icons": "^1.0.0-alpha"
+        "bootstrap-icons": "^1.0.0-alpha",
+        "jquery": "^3.4.1",
+        "popper.js": "^1.16.0",
+        "yarn": "^1.21.0"
     }
 }

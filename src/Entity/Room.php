@@ -22,9 +22,13 @@ class Room
      * @ORM\OneToMany(targetEntity="App\Entity\Roomitem", mappedBy="room")
      */
     private $roomitems;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Checklist", mappedBy="room")
+     */
+    private $checklists;
+
     public function __construct()
     {
-        $this->name = new ArrayCollection();
         $this->roomitems = new ArrayCollection();
     }
     public function getId(): ?int
@@ -32,34 +36,15 @@ class Room
         return $this->id;
     }
     /**
-     * @return Collection|Checklist[]
+     * @return string
      */
-    public function getName(): Collection
+    public function getName(): string
     {
         return $this->name;
     }
     public function setName(?string $name): self
     {
         $this->name = $name;
-        return $this;
-    }
-    public function addName(Checklist $name): self
-    {
-        if (!$this->name->contains($name)) {
-            $this->name[] = $name;
-            $name->setRoom($this);
-        }
-        return $this;
-    }
-    public function removeName(Checklist $name): self
-    {
-        if ($this->name->contains($name)) {
-            $this->name->removeElement($name);
-            // set the owning side to null (unless already changed)
-            if ($name->getRoom() === $this) {
-                $name->setRoom(null);
-            }
-        }
         return $this;
     }
     /**
@@ -84,6 +69,32 @@ class Room
             // set the owning side to null (unless already changed)
             if ($roomitem->getRoom() === $this) {
                 $roomitem->setRoom(null);
+            }
+        }
+        return $this;
+    }
+    /**
+     * @return Collection|Checklist[]
+     */
+    public function getChecklists(): Collection
+    {
+        return $this->checklists;
+    }
+    public function addChecklist(Checklist $checklist): self
+    {
+        if (!$this->checklists->contains($checklist)) {
+            $this->checklists[] = $checklist;
+            $checklist->setRoom($this);
+        }
+        return $this;
+    }
+    public function removeChecklist(Checklist $checklist): self
+    {
+        if ($this->checklists->contains($checklist)) {
+            $this->checklists->removeElement($checklist);
+            // set the owning side to null (unless already changed)
+            if ($checklist->getRoom() === $this) {
+                $checklist->setRoom(null);
             }
         }
         return $this;

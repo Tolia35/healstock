@@ -23,7 +23,7 @@ class Checklist
      */
     private $createTime;
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Room", inversedBy="name")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Room", inversedBy="checklists")
      * @ORM\JoinColumn(nullable=false)
      */
     private $room;
