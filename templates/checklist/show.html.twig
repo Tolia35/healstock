@@ -8,6 +8,14 @@
     <p> Infirmière : {{ checklist.nursename }}
         Date de création : { checklist.createdTime|date('d-m-y h-i-s') }}
     </p>
-        //item loop TODO
+
+    <section>
+        {% for item in items %}
+            <article>
+                <em>{{ item.reference }}</em>
+                <p>{{ item.information }}</p>
+            </article>
+        {% endfor %}
+    </section>
 
 {% endblock %}

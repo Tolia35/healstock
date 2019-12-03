@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Item index{% endblock %}
+
+{% block body %}
+    <h1>Item</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Ref</th>
+            <th>Infos</th>
+            <th>supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in itemss %}
+            <tr>
+                <td>{{ item.reference }}</td>
+                <td>{{ item.information }}</td>
+                <td>
+                    <a href="{{ path('item_delete', {'id': item.id}) }}">Supp</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Liste vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('item_new') }}">Ajouter un produit</a>
+{% endblock %}
