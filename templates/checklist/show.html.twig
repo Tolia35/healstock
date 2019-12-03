@@ -3,18 +3,20 @@
 {% block title %}{{ checklist.id }}{% endblock %}
 
 {% block body %}
+    <div class="col" style="justify-content: center; padding-bottom: 20px">
     <hr>
 
-    <h1>{{ checklist.id }}</h1>
-    <p> Infirmière : {{ checklist.nursename }}
-        Date de création : { checklist.createdTime|date('d-m-y h-i-s') }}
+    <h3>Liste N°{{ checklist.id }}</h3>
+    <p> Infirmière : {{ checklist.nursename }} <br>
+        Date de création : {{ checklist.createtime|date('d/m/Y') }}
     </p>
+    </div>
 
     <section>
         {% for item in items %}
-            <article>
-                <em>{{ item.reference }}</em>
-                <p>{{ item.information }}</p>
+            <article style="background-color: #a6a6a6">
+                <em><img src="/healstock/node_modules/bootstrap-icons/icons/tag-fill.svg" width="25" height="25" title="tag"> {{ item.reference }}</em>
+                <p><img src="/healstock/node_modules/bootstrap-icons/icons/info-fill.svg" width="25" height="25" title="info"> {{ item.information }}</p>
             </article>
         {% endfor %}
     </section>
