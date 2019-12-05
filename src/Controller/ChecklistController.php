@@ -1,12 +1,13 @@
 <?php
 namespace App\Controller;
+
 use App\Entity\Checklist;
 use App\Entity\Item;
+use App\Form\ChecklistType;
 use App\Entity\Checklistitem;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 class ChecklistController extends AbstractController
 {
@@ -21,4 +22,5 @@ class ChecklistController extends AbstractController
             'items' => $items
         ]);
     }
+
 }
