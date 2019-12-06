@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head> {#header#}
     <meta charset="UTF-8">
     <title>{% block title %}Heal&Stock{% endblock %}</title>
     {% block stylesheets %}
@@ -15,7 +15,7 @@
     </div>
     <hr>
 </head>
-<body style="background-color:#38b6ff; justify-items: center">
+<body style="background-color:#38b6ff; justify-items: center">{# body de la page principale #}
 
 <main class="main-content">
     <section>
@@ -33,7 +33,7 @@
                 <img src="/healstock/node_modules/bootstrap-icons/icons/person-fill.svg" width="60" height="60" title="admin"></a></li>
         </ul>
     </nav>
-</footer>
+</footer> {# footer #}
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
 {% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-center">
+                    Créer une nouvelle liste
+                </h3>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}<br>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+                <button type="button submit" class="btn btn-primary btn-md btn-block">
+                    Valider
+                </button>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

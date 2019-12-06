@@ -8,16 +8,16 @@
             </div>
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-12" style="max-width: 70%; padding-left: 30% ">
+                    <div class="col-md-12" style="max-width: 70%; padding-left: 30% "> {# add list part #}
 
                         <button type="button" class="btn btn-primary btn-md btn-block">
-                            Ajouter une liste
+                            <a href="{{ path('checklist_new') }}"> Ajouter une liste </a>
                         </button>
                     </div>
                 </div>
                 <br>
                 <div class="row" >
-                    <div class="col-md-12" style="padding-left: 5%">
+                    <div class="col-md-12" style="padding-left: 5%"> {# list table loop #}
                         {% for checklist in checklists %}
                             {% include 'checklist/_thumbnail.html.twig' with { 'checklist': checklist } only %}
                         {% endfor %}

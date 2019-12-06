@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="dropdown">
+                <div class="dropdown"> {# menu btn #}
 
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
                         Menu profil
@@ -17,13 +17,10 @@
                     </div>
                 </div>
                 <br>
-                <h3>
-                    Espace infirmerie
-
-                </h3>
+                <h3> Espace infirmerie </h3>
                 <br>
                 <div class="tabbable" id="tabs-863841">
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs"> {# list navbar #}
                         <li class="nav-item">
                             <a style="color: black;" class="nav-link  active show" href="#tab1" data-toggle="tab">A traiter</a>
                         </li>
@@ -33,7 +30,7 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane" id="tab1">
-                            <table class="table table-sm table-striped">
+                            <table class="table table-sm table-striped">{# list table to closed #}
                                 <thead>
                                 <tr>
                                     <th>N°</th>
@@ -42,7 +39,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for checklist in checklists %} {# variable isclosed=false #}
+                                {% for checklist in checklists %} {# todo variable isclosed=false #}
                                     <tr class="table-active">
                                         <td>{{ checklist.id }}</td>
                                         <td>{{ checklist.nursename }}</td>
@@ -53,7 +50,7 @@
                             </table>
                         </div>
                         <div class="tab-pane" id="tab2">
-                            <table class="table table-sm table-striped">
+                            <table class="table table-sm table-striped"> {# liste table closed #}
                                 <thead>
                                 <tr class="table-active">
                                     <th>N°</th>
@@ -62,7 +59,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for checklist in checklists %} {# variable isclosed=true #}
+                                {% for checklist in checklists %} {# todo variable isclosed=true #}
                                     <tr>
                                         <td>{{ checklist.id }}</td>
                                         <td>{{ checklist.nursename }}</td>
