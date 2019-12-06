@@ -10,7 +10,7 @@
     <div class="container">
     <div class="row" style="justify-content: center;">
         <h2  class="col-6">HEAL & STOCK</h2>
-        <img class="col-5" style="max-width: 15%; padding: 3px" src="/healstock/assets/images/logo.png" alt="Logo">
+        <img class="col-5" style="max-width: 70px; padding: 3px" src="/healstock/assets/images/logo.png" alt="Logo">
     </div>
     </div>
     <hr>
@@ -29,7 +29,8 @@
         <ul class="row" style="justify-content: space-evenly;">
             <a href="{{ path('homepage') }}"><img src="/healstock/node_modules/bootstrap-icons/icons/archive.svg" width="60" height="60" title="archive"></a></li>
             <a href="#"><img src="/healstock/node_modules/bootstrap-icons/icons/plus.svg" width="60" height="60" title="plus"></a></li>
-            <a href="{{ path('app_login') }}"><img src="/healstock/node_modules/bootstrap-icons/icons/person-fill.svg" width="60" height="60" title="admin"></a></li>
+            <a href=" {% if app.user %} {{ path('user_profile') }} {% else %} {{ path('app_login') }} {% endif %}">
+                <img src="/healstock/node_modules/bootstrap-icons/icons/person-fill.svg" width="60" height="60" title="admin"></a></li>
         </ul>
     </nav>
 </footer>

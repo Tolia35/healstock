@@ -4,6 +4,120 @@
 
 {% block body %}
 
-    <h1>Vous êtes bien connecté</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="dropdown">
+
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                        Menu profil
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item disabled" href="#">Configuration</a> <a class="dropdown-item" href="{{ 'app.logout' }}">Déconnexion</a>
+                    </div>
+                </div>
+                <br>
+                <h3>
+                    Espace infirmerie
+
+                </h3>
+                <br>
+                <div class="tabbable" id="tabs-863841">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a style="color: black;" class="nav-link" href="#tab1" data-toggle="tab">A traiter</a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="color: black;" class="nav-link active show" href="#tab2" data-toggle="tab">Cloturé</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="panel-203690">
+                        </div>
+                        <div class="tab-pane" id="tab2">
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-sm table-striped">
+                    <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            N°
+                        </th>
+                        <th>
+                            Date de création
+                        </th>
+                        <th>
+                            Salle
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="table-active">
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            01/04/2012
+                        </td>
+                        <td>
+                            Default
+                        </td>
+                    </tr>
+                    <tr class="table-active">
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            01/04/2012
+                        </td>
+                        <td>
+                            Approved
+                        </td>
+                    </tr>
+                    <tr class="table-active"">
+                        <td>
+                            2
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            02/04/2012
+                        </td>
+                        <td>
+                            Declined
+                        </td>
+                    </tr>
+                    <tr class="table-active"">
+                        <td>
+                            3
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            03/04/2012
+                        </td>
+                        <td>
+                            Pending
+                        </td>
+                    </tr>
+                    <tr class="table-active"">
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
