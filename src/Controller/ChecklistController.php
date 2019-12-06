@@ -22,5 +22,4 @@ class ChecklistController extends AbstractController
             'items' => $items
         ]);
     }
-
 }

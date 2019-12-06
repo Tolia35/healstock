@@ -25,97 +25,58 @@
                 <div class="tabbable" id="tabs-863841">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a style="color: black;" class="nav-link" href="#tab1" data-toggle="tab">A traiter</a>
+                            <a style="color: black;" class="nav-link  active show" href="#tab1" data-toggle="tab">A traiter</a>
                         </li>
                         <li class="nav-item">
-                            <a style="color: black;" class="nav-link active show" href="#tab2" data-toggle="tab">Cloturé</a>
+                            <a style="color: black;" class="nav-link" href="#tab2" data-toggle="tab">Cloturé</a>
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="panel-203690">
+                        <div class="tab-pane" id="tab1">
+                            <table class="table table-sm table-striped">
+                                <thead>
+                                <tr>
+                                    <th>N°</th>
+                                    <th>Demandeur</th>
+                                    <th>Date de création</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for checklist in checklists %} {# variable isclosed=false #}
+                                    <tr class="table-active">
+                                        <td>{{ checklist.id }}</td>
+                                        <td>{{ checklist.nursename }}</td>
+                                        <td>{{ checklist.createtime|date('d/m/Y') }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
                         <div class="tab-pane" id="tab2">
+                            <table class="table table-sm table-striped">
+                                <thead>
+                                <tr class="table-active">
+                                    <th>N°</th>
+                                    <th>Demandeur</th>
+                                    <th>Date de création</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for checklist in checklists %} {# variable isclosed=true #}
+                                    <tr>
+                                        <td>{{ checklist.id }}</td>
+                                        <td>{{ checklist.nursename }}</td>
+                                        <td>{{ checklist.createtime|date('d/m/Y') }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <table class="table table-sm table-striped">
-                    <thead>
-                    <tr>
-                        <th>
-                            #
-                        </th>
-                        <th>
-                            N°
-                        </th>
-                        <th>
-                            Date de création
-                        </th>
-                        <th>
-                            Salle
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="table-active">
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            TB - Monthly
-                        </td>
-                        <td>
-                            01/04/2012
-                        </td>
-                        <td>
-                            Default
-                        </td>
-                    </tr>
-                    <tr class="table-active">
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            TB - Monthly
-                        </td>
-                        <td>
-                            01/04/2012
-                        </td>
-                        <td>
-                            Approved
-                        </td>
-                    </tr>
-                    <tr class="table-active"">
-                        <td>
-                            2
-                        </td>
-                        <td>
-                            TB - Monthly
-                        </td>
-                        <td>
-                            02/04/2012
-                        </td>
-                        <td>
-                            Declined
-                        </td>
-                    </tr>
-                    <tr class="table-active"">
-                        <td>
-                            3
-                        </td>
-                        <td>
-                            TB - Monthly
-                        </td>
-                        <td>
-                            03/04/2012
-                        </td>
-                        <td>
-                            Pending
-                        </td>
-                    </tr>
-                    <tr class="table-active"">
-                    </tr>
-                    </tbody>
-                </table>
+
+
+
             </div>
         </div>
     </div>

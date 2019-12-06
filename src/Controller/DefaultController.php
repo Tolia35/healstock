@@ -13,7 +13,7 @@ class DefaultController extends AbstractController
     {
         $checklists = $this->getDoctrine()->getRepository(Checklist::class)->findAll();
         /* dump($checklist); */
-        return $this->render("default/homepage.html.twig", [
+        return $this->render("default/homepage.html.twig",  [
             "checklists" => $checklists
         ]);
     }
