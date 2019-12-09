@@ -2,7 +2,9 @@
 
 namespace App\Form;
 use App\Entity\Checklist;
+use App\Entity\Room;
 use Doctrine\DBAL\Types\TextType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,9 +16,13 @@ class ChecklistType extends AbstractType
     {
         $builder
             ->add('nurseName', null, ['label' => 'Votre nom'])
-            ->add('Room', NumberType::class, [
-                'label' => 'Bloc N°']
-            )
+            ->add('Room',EntityType::class,[
+                'class' => Room::class,
+                'choice_label' => function ($room) {
+                    return $room->getName();
+                },
+                'label' => 'Choix du bloc'
+            ])
         ;
     }
 

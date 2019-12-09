@@ -1,8 +1,6 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
@@ -16,16 +14,15 @@
                     <div class="col-md-12">
                         {{ form_start(form) }}
                         {{ form_widget(form) }}<br>
-                        {{ form_end(form) }}
                     </div>
                 </div>
                 <button type="button submit" class="btn btn-primary btn-md btn-block">
                     Valider
                 </button>
+                {{ form_end(form) }}
             </div>
             <div class="col-md-4">
             </div>
         </div>
     </div>
-
 {% endblock %}

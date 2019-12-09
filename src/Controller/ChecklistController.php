@@ -13,7 +13,8 @@ class ChecklistController extends AbstractController
 
     /**
      * @Route("/checklist/new", name="checklist_new")
-     */public function new(Request $request)
+     */
+    public function new(Request $request)
 {
     $article = new Checklist();
     $form = $this->createForm(ChecklistType::class);

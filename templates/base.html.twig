@@ -28,7 +28,7 @@
     <nav class="container" style="background-color: lightgray; max-width: 100%; position: fixed; right: 0; top: 92%;">
         <ul class="row" style="justify-content: space-evenly;">
             <a href="{{ path('homepage') }}"><img src="/healstock/node_modules/bootstrap-icons/icons/archive.svg" width="60" height="60" title="archive"></a></li>
-            <a href="#"><img src="/healstock/node_modules/bootstrap-icons/icons/plus.svg" width="60" height="60" title="plus"></a></li>
+            <a href="{{ path('checklist_new') }}"><img src="/healstock/node_modules/bootstrap-icons/icons/plus.svg" width="60" height="60" title="plus"></a></li>
             <a href=" {% if app.user %} {{ path('user_profile') }} {% else %} {{ path('app_login') }} {% endif %}">
                 <img src="/healstock/node_modules/bootstrap-icons/icons/person-fill.svg" width="60" height="60" title="admin"></a></li>
         </ul>
