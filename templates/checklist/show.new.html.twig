@@ -24,19 +24,30 @@
                 <button type="button" class="btn btn-primary btn-md btn-block">
                     <a style="color: white"href="{{ path('checklistitem_new', {'id': checklist.id}) }}"> Ajouter un produit </a>
                 </button>
-                <div class="row">
-                    <div class="col-md-8" style="padding: 3px">
-                        <section>
                             {% for checklistItem in checklist.checklistItems %}
-                                <article>
-                                    <em style="font-weight: bold;"><img src="/healstock/node_modules/bootstrap-icons/icons/tag-fill.svg" width="25" height="25" title="tag"> {{ checklistItem.item.reference }}</em>
-                                    <p><img src="/healstock/node_modules/bootstrap-icons/icons/info-fill.svg" width="25" height="25" title="info"> {{ checklistItem.item.information }}</p>
-                                    <a href="#"><img src="/healstock/node_modules/bootstrap-icons/icons/trash.svg" width="25" height="25" title="supprimer"></a>
-                                </article>
-                            {% endfor %}
-                        </section>
-                    </div>
+                <div class="row">
+                    <hr>
+                            <div class="col-10">
+                                <section>
+                                    <article>
+                                <div><br>
+                                    <div style="background-color: #a6a6a6;"><em style="font-weight: bold;"><img src="/healstock/node_modules/bootstrap-icons/icons/tag-fill.svg" width="25" height="25" title="tag"> {{ checklistItem.item.reference }}</em>
+                                    </div>
+                                    <div style="background-color: lightgrey;"><p><img src="/healstock/node_modules/bootstrap-icons/icons/info-fill.svg" width="25" height="25" title="info"> {{ checklistItem.item.information }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <br><br>
+                                    <div>
+                                        <a href="#"><img src="/healstock/node_modules/bootstrap-icons/icons/trash.svg" width="25" height="25" title="supprimer"></a>
+                                    </div>
+                            </div>
                 </div>
+                    {% endfor %}
+                                </article>
+                                </section>
+
                 <button type="button" class="btn btn-primary btn-md btn-block">
                     <a style="color: white"href="{{ path('homepage')}}">Transmettre la liste</a>
                 </button>
