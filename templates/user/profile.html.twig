@@ -37,6 +37,7 @@
                                     <th>Demandeur</th>
                                     <th>Date de création</th>
                                     <th>Nombre de produit</th>
+                                    <th>Detail</th>
 
                                 </tr>
                                 </thead>
@@ -47,6 +48,7 @@
                                             <td>{{ checklist.nursename }}</td>
                                             <td>{{ checklist.createtime|date('d/m/Y') }}</td>
                                             <td>{{ checklist.checklistitems|length }}</td>
+                                            <td><a href="{{ path('checklist_show', {'id': checklist.id} )}}"><img src="/healstock/node_modules/bootstrap-icons/icons/info-fill.svg" width="20" height="20" title="info"></a></td>
                                         </tr>
                                 {% endfor %}
                                 </tbody>
@@ -60,6 +62,7 @@
                                     <th>Demandeur</th>
                                     <th>Date de création</th>
                                     <th>Nombre de produit</th>
+                                    <th>Detail</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -70,6 +73,7 @@
                                         <td>{{ checklist.nursename }}</td>
                                         <td>{{ checklist.createtime|date('d/m/Y') }}</td>
                                         <td>{{ checklist.checklistitems|length }}</td>
+                                        <td><a href="{{ path('checklist_show', {'id': checklist.id} )}}"><img src="/healstock/node_modules/bootstrap-icons/icons/info-fill.svg" width="20" height="20" title="info"></a></td>
                                     </tr>
                                     {% endif %}
                                 {% endfor %}
