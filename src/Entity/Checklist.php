@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ChecklistRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Checklist
 {
@@ -101,5 +102,14 @@ class Checklist
             }
         }
         return true;
+
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->setCreateTime(new \DateTime());
     }
 }

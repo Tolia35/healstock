@@ -13,7 +13,7 @@
                         Menu profil
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item disabled" href="#">Configuration</a> <a class="dropdown-item" href="{{ path('app.logout') }}">Déconnexion</a>
+                        <a class="dropdown-item disabled" href="#">Configuration</a> <a class="dropdown-item" href="{{ path('app_logout')}}">Déconnexion</a>
                     </div>
                 </div>
                 <br>
@@ -36,15 +36,18 @@
                                     <th>N°</th>
                                     <th>Demandeur</th>
                                     <th>Date de création</th>
+                                    <th>Nombre de produit</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for checklist in checklists %} {# todo variable isclosed=false #}
-                                    <tr class="table-active">
-                                        <td>{{ checklist.id }}</td>
-                                        <td>{{ checklist.nursename }}</td>
-                                        <td>{{ checklist.createtime|date('d/m/Y') }}</td>
-                                    </tr>
+                                {% for checklist in checklists %}
+                                        <tr class="table-active">
+                                            <td>{{ checklist.id }}</td>
+                                            <td>{{ checklist.nursename }}</td>
+                                            <td>{{ checklist.createtime|date('d/m/Y') }}</td>
+                                            <td>{{ checklist.checklistitems|length }}</td>
+                                        </tr>
                                 {% endfor %}
                                 </tbody>
                             </table>
@@ -56,15 +59,19 @@
                                     <th>N°</th>
                                     <th>Demandeur</th>
                                     <th>Date de création</th>
+                                    <th>Nombre de produit</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for checklist in checklists %} {# todo variable isclosed=true #}
+                                    {% if checklist.isClosed %}
                                     <tr>
                                         <td>{{ checklist.id }}</td>
                                         <td>{{ checklist.nursename }}</td>
                                         <td>{{ checklist.createtime|date('d/m/Y') }}</td>
+                                        <td>{{ checklist.checklistitems|length }}</td>
                                     </tr>
+                                    {% endif %}
                                 {% endfor %}
                                 </tbody>
                             </table>

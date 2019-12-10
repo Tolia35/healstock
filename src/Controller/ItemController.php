@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Entity\Checklist;
 use App\Entity\Item;
+use App\Form\ChecklistType;
 use App\Form\ItemType;
 use App\Repository\ItemRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

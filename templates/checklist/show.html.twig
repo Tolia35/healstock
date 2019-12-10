@@ -12,10 +12,10 @@
     </div>
 
     <section>
-        {% for item in items %}
+        {% for checklistItem in checklist.checklistItems %}
             <article style="background-color: #a6a6a6;">
-                <em style="font-weight: bold;"><img src="/healstock/node_modules/bootstrap-icons/icons/tag-fill.svg" width="25" height="25" title="tag"> {{ item.reference }}</em>
-                <p><img src="/healstock/node_modules/bootstrap-icons/icons/info-fill.svg" width="25" height="25" title="info"> {{ item.information }}</p>
+                <em style="font-weight: bold;"><img src="/healstock/node_modules/bootstrap-icons/icons/tag-fill.svg" width="25" height="25" title="tag"> {{ checklistItem.item.reference }}</em>
+                <p><img src="/healstock/node_modules/bootstrap-icons/icons/info-fill.svg" width="25" height="25" title="info"> {{ checklistItem.item.information }}</p>
             </article>
         {% endfor %}
     </section>

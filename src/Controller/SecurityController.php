@@ -26,11 +26,12 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/logout", name="app_logout")
+     * @Route("/logout", name="app_logout", methods={"GET"})
      */
     public function logout()
     {
-        throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
+        // controller can be blank: it will never be executed!
+        throw new \Exception('Don\'t forget to activate logout in security.yaml');
     }
 
 }
