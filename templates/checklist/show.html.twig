@@ -3,24 +3,62 @@
 {% block title %}{{ checklist.id }}{% endblock %}
 
 {% block body %} {# details list #}
-    <div class="col" style="padding-bottom: 20px">
-        <h3>Liste N°{{ checklist.id }}</h3>
-        <p> Demandeur : {{ checklist.nursename }} <br>
-        Date de création : {{ checklist.createtime|date('d/m/Y') }}
-        </p>
-    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
 
-    <section>
-        {% for checklistItem in checklist.checklistItems %}
-            <article style="background-color: #a6a6a6;">
-                <em style="font-weight: bold;"><img src="/healstock/node_modules/bootstrap-icons/icons/tag-fill.svg" width="25" height="25" title="tag"> {{ checklistItem.item.reference }}</em>
-                <p><img src="/healstock/node_modules/bootstrap-icons/icons/info-fill.svg" width="25" height="25" title="info"> {{ checklistItem.item.information }}</p>
-            </article>
+                <h3>Liste N°{{ checklist.id }}</h3>
+                <p> Demandeur : {{ checklist.nursename }} <br>
+                    Date de création : {{ checklist.createtime|date('d/m/Y') }}
+                </p>
+                <hr>
+                <br>
+                {% if app.user %}
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" class="check" id="checkAll"> Tout traiter
+                    </label>
+                </div>
+                {% endif %}
+                {% for checklistItem in checklist.checklistItems %} {# loop items of the list #}
+                <div class="row">
+                    <div class="col-1">
+                    </div>
+                    <div class="col-9" style="background-color: lightblue">
+                        <em style="font-weight: bold; font-size: 20px"><img src="/healstock/node_modules/bootstrap-icons/icons/tag-fill.svg" width="25" height="25" title="tag"> {{ checklistItem.item.reference }}</em>
+                    </div>
+                    <div class="col-1" style="background-color: lightblue; padding-left: 2px">
+                        {% if app.user %}{# checkbox needed to cloture item #}
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1"></label>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-1">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-9" style="background-color: white">
+                        <em> - {{ checklistItem.item.information }}</em>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br>
         {% endfor %}
-    </section>
-
-    <div class="row" style="justify-content: center">
-        <input type="button" value="<" onclick="javascript:history.back()">
+{%  if app.user %}
+    <div class="col-md-4">
+        <button type="button" class="btn btn-primary btn-md btn-block">
+            <a style="color: white"href="{{ path('homepage')}}">Cloturer les éléments cochés</a>
+        </button>
+        {% endif %}
     </div>
+
 
 {% endblock %}

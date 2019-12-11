@@ -8,7 +8,8 @@
     {% endblock %}
 
     <div class="container">
-    <div class="row" style="justify-content: center;">
+    <div class="row" style="justify-content: center; height: ">
+            <input type="button" value="<" onclick="javascript:history.back()">
         <h2  class="col-6">HEAL & STOCK</h2>
         <img class="col-5" style="max-width: 70px; padding: 3px" src="/healstock/assets/images/logo.png" alt="Logo">
     </div>
@@ -26,11 +27,11 @@
 <hr>
 <footer>
     <nav class="container" style="background-color: lightgray; max-width: 100%; position: fixed; right: 0; top: 92%;">
-        <ul class="row" style="justify-content: space-evenly;">
-            <a href="{{ path('homepage') }}"><img src="/healstock/node_modules/bootstrap-icons/icons/archive.svg" width="60" height="60" title="archive"></a></li>
-            <a href="{{ path('checklist_new') }}"><img src="/healstock/node_modules/bootstrap-icons/icons/plus.svg" width="60" height="60" title="plus"></a></li>
+        <ul class="row" style="justify-content: space-evenly; padding-right: 30px">
+            <a href="{{ path('homepage') }}"><img class="footerimg" src="/healstock/node_modules/bootstrap-icons/icons/archive.svg" width="60" height="60" title="archive"></a></li>
+            <a href="{{ path('checklist_new') }}"><img class="footerimg" src="/healstock/node_modules/bootstrap-icons/icons/plus.svg" width="60" height="60" title="plus"></a></li>
             <a href=" {% if app.user %} {{ path('user_profile') }} {% else %} {{ path('app_login') }} {% endif %}">
-                <img src="/healstock/node_modules/bootstrap-icons/icons/person-fill.svg" width="60" height="60" title="admin"></a></li>
+                <img class="footerimg" src="/healstock/node_modules/bootstrap-icons/icons/person-fill.svg" width="60" height="60" title="admin"></a></li>
         </ul>
     </nav>
 </footer> {# footer #}

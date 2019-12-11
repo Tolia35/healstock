@@ -16,14 +16,14 @@
                     <div class="col-md-12" style="max-width: 70%; padding-left: 30% "> {# add list part #}
 
                         <button type="button" class="btn btn-primary btn-md btn-block">
-                            <a style="color: white"href="{{ path('checklist_new') }}"> Ajouter une liste </a>
+                            <a style="color: white"href="{{ path('checklist_new') }}"> Nouvelle liste </a>
                         </button>
                     </div>
                 </div>
-                <br>
-                <div class="row" >
-                    <div class="col-md-12" style="padding-left: 5%"> {# list table loop #}
-                        {% for checklist in checklists %}
+                <div class="row d-flex justify-content-center" >
+                    <div class="col-md-12 " style="padding-left: 5%; margin-bottom: 60px;"> {# list table loop #}
+                        {% for checklist in checklists|reverse %}
+                            <hr>
                             {% include 'checklist/_thumbnail.html.twig' with { 'checklist': checklist } only %}
                         {% endfor %}
                     </div>

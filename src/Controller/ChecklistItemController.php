@@ -48,4 +48,17 @@ class ChecklistItemController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/checklist/shownew/{id}", name="checklistitem_delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, Checklistitem $checklistitem, Checklist $checklist): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$checklistitem->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($checklistitem);
+            $entityManager->flush();
+        }
+        return $this->redirectToRoute('checklist_show_new', ['id' => $checklist->getId()]);
+    }
 }
