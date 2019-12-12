@@ -62,4 +62,24 @@ class ChecklistItemController extends AbstractController
         }
         return $this->redirectToRoute('checklist_show_new', ['id' => $checklist->getId()]);
     }
+
+    /**
+     * @Route("/checklist/{id}", name="checklistitem_update", methods={"GET", "POST"})
+     */
+    public function edit(Checklistitem $checklistitem, Request $request, Checklist $checklist)
+    {
+        $form = $this->createForm(ChecklistitemType::class, $checklistitem);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($checklistitem);
+            $em->flush();
+            return $this->redirectToRoute("checklist/show.html.twig", ['id' => $checklist->getId()]);
+        }
+        return $this->render('checklist/show.html.twig', [
+            'form' => $form->createView(),
+            'checklist' => $checklist
+        ]);
+    }
 }
+
