@@ -8,10 +8,15 @@
     {% endblock %}
 
     <div class="container">
-    <div class="row" style="justify-content: center; height: ">
-            <input type="button" value="<" onclick="javascript:history.back()">
-        <h2  class="col-6">HEAL & STOCK</h2>
-        <img class="col-5" style="max-width: 70px; padding: 3px" src="/healstock/assets/images/logo.png" alt="Logo">
+    <div class="row" style="justify-content: space-evenly">
+        {# gobackbtn#}
+        <a href="javascript:history.back()">
+        <img class="btn-light"src="/healstock/node_modules/bootstrap-icons/icons/arrow-left.svg" style="height: 45px; margin-top: 20px; border: #222222; border-radius: 25px; "alt="goback">
+        </a>
+        {# sitetitle #}
+        <h2  class="col-6" style="margin-top: 10px">HEAL & STOCK</h2>
+        {# site logo #}
+        <img class="col-5" style="max-width: 80px; padding: 3px" src="/healstock/assets/images/logo.png" alt="Logo">
     </div>
     </div>
     <hr>

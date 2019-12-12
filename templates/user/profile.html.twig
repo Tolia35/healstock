@@ -19,10 +19,10 @@
                 <br>
                 <h3> Espace infirmerie </h3>
                 <br>
-                <div class="tabbable" id="tabs-863841">
+                <div class="tabbable" id="tabs-863841" style="margin-bottom: 50px;">
                     <ul class="nav nav-tabs"> {# list navbar #}
                         <li class="nav-item">
-                            <a style="color: black;" class="nav-link  active show" href="#tab1" data-toggle="tab">A traiter</a>
+                            <a style="color: black;" class="nav-link" href="#tab1" data-toggle="tab">A traiter</a>
                         </li>
                         <li class="nav-item">
                             <a style="color: black;" class="nav-link" href="#tab2" data-toggle="tab">Cloturé</a>
@@ -32,17 +32,17 @@
                         <div class="tab-pane" id="tab1">
                             <table class="table table-sm table-striped">{# list table to closed #}
                                 <thead>
-                                <tr>
+                                <tr class="table-active">
                                     <th>N°</th>
                                     <th>Demandeur</th>
                                     <th>Date de création</th>
                                     <th>Nombre de produit</th>
                                     <th>Detail</th>
-
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for checklist in checklists %}
+                                    {% if checklist.isNotClosed %}
                                         <tr class="table-active">
                                             <td>{{ checklist.id }}</td>
                                             <td>{{ checklist.nursename }}</td>
@@ -50,6 +50,7 @@
                                             <td>{{ checklist.checklistitems|length }}</td>
                                             <td><a href="{{ path('checklist_show', {'id': checklist.id} )}}"><img src="/healstock/node_modules/bootstrap-icons/icons/info-fill.svg" width="20" height="20" title="info"></a></td>
                                         </tr>
+                                    {% endif %}
                                 {% endfor %}
                                 </tbody>
                             </table>
@@ -66,7 +67,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for checklist in checklists %} {# todo variable isclosed=true #}
+                                {% for checklist in checklists %}
                                     {% if checklist.isClosed %}
                                     <tr>
                                         <td>{{ checklist.id }}</td>
@@ -82,9 +83,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
     </div>
