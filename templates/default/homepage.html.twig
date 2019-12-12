@@ -2,16 +2,18 @@
 
 
 {% block body %}
-    {% for message in app.flashes('successchecklist') %}
-        <div class="alert alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
+
     <div class="container-fluid " >
         <div class="row">
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
+                {% for message in app.flashes('successchecklist') %}
+                    <br>
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
                 <div class="row">
                     <div class="col-md-12" style="max-width: 70%; padding-left: 30% "> {# add list part #}
 

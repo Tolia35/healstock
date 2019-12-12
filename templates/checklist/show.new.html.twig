@@ -17,18 +17,23 @@
                         {{ message }}
                     </div>
                 {% endfor %}
+                {% for message in app.flashes('successdelete') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
                 <button type="button" class="btn btn-primary btn-md btn-block">
                     <a style="color: white"href="{{ path('checklistitem_new', {'id': checklist.id}) }}"> Ajouter un produit </a>
                 </button>
                 <br>
-                {% for checklistItem in checklist.checklistItems %} {# loop items of the list #}
+                {% for checklistItem in checklist.checklistItems|reverse %} {# loop items of the list #}
                 <div class="row">
                     <div class="col-1">
                         </div>
                     <div class="col-9" style="background-color: lightblue">
                         <em style="font-weight: bold; font-size: 20px"><img src="/healstock/node_modules/bootstrap-icons/icons/tag-fill.svg" width="25" height="25" title="tag"> {{ checklistItem.item.reference }}</em>
                     </div>
-                    <div class="col-1" style="background-color: lightblue; padding-left: 2px">
+                    <div class="col-1" style="background-color: lightblue">
                         <a href="{{ path('checklistitem_delete', {'id': checklist.id}) }}"><img src="/healstock/node_modules/bootstrap-icons/icons/trash.svg" width="25" height="25" title="supprimer"></a>
                     </div>
                     <div class="col-1">
@@ -40,15 +45,17 @@
                     <div class="col-9" style="background-color: white">
                         <em> - {{ checklistItem.item.information }}</em>
                     </div>
+
                     </div>
+                    <br>
+                {% endfor %}
                     <div class="col-1">
                     </div>
                     </div>
+
                 </div>
-        <br>
-                {% endfor %}
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" style="padding-bottom: 55px">{# btn list sent #}
                 <button type="button" class="btn btn-primary btn-md btn-block">
                     <a style="color: white"href="{{ path('homepage')}}">Transmettre la liste</a>
                 </button>

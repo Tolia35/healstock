@@ -41,7 +41,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for checklist in checklists %}
+                                {% for checklist in checklists|reverse %}
                                     {% if checklist.isNotClosed %}
                                         <tr class="table-active">
                                             <td>{{ checklist.id }}</td>
@@ -67,7 +67,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for checklist in checklists %}
+                                {% for checklist in checklists|reverse %}
                                     {% if checklist.isClosed %}
                                     <tr>
                                         <td>{{ checklist.id }}</td>

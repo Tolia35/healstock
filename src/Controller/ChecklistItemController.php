@@ -55,6 +55,7 @@ class ChecklistItemController extends AbstractController
     public function delete(Request $request, Checklistitem $checklistitem, Checklist $checklist): Response
     {
         if ($this->isCsrfTokenValid('delete'.$checklistitem->getId(), $request->request->get('_token'))) {
+            $this->addFlash('successdelete', 'Votre produit est supprimé !');
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($checklistitem);
             $entityManager->flush();

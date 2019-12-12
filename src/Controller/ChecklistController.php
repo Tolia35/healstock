@@ -21,6 +21,7 @@ class ChecklistController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $checklist = $form->getData();
+            $this->addFlash('successchecklist', 'Votre Liste est transmise !');
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($checklist);
