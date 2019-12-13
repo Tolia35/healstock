@@ -20,6 +20,7 @@
         "bootstrap-icons": "^1.0.0-alpha",
         "jquery": "^3.4.1",
         "popper.js": "^1.16.0",
+        "quagga": "^0.12.1",
         "yarn": "^1.21.0"
     }
 }

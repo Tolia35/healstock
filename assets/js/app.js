@@ -18,3 +18,5 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 jQuery(function() {
     jQuery('[data-check-pattern]').checkAll();
 });
+
+const Quagga = require('quagga').default; // Common JS (important: default)

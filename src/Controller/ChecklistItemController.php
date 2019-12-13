@@ -52,7 +52,7 @@ class ChecklistItemController extends AbstractController
     /**
      * @Route("/checklist/shownew/{id}", name="checklistitem_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Checklistitem $checklistitem, Checklist $checklist): Response
+    public function delete(Request $request, Checklistitem $checklistitem): Response
     {
         if ($this->isCsrfTokenValid('delete'.$checklistitem->getId(), $request->request->get('_token'))) {
             $this->addFlash('successdelete', 'Votre produit est supprimé !');
@@ -60,13 +60,15 @@ class ChecklistItemController extends AbstractController
             $entityManager->remove($checklistitem);
             $entityManager->flush();
         }
-        return $this->redirectToRoute('checklist_show_new', ['id' => $checklist->getId()]);
+        return $this->redirectToRoute('checklist_show_new');
     }
+
+
 
     /**
      * @Route("/checklist/{id}", name="checklistitem_update", methods={"GET", "POST"})
      */
-    public function edit(Checklistitem $checklistitem, Request $request, Checklist $checklist)
+    public function edit(Checklistitem $checklistitem, Request $request)
     {
         $form = $this->createForm(ChecklistitemType::class, $checklistitem);
         $form->handleRequest($request);
@@ -74,11 +76,10 @@ class ChecklistItemController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($checklistitem);
             $em->flush();
-            return $this->redirectToRoute("checklist/show.html.twig", ['id' => $checklist->getId()]);
+            return $this->redirectToRoute("checklist/show.html.twig");
         }
         return $this->render('checklist/show.html.twig', [
             'form' => $form->createView(),
-            'checklist' => $checklist
         ]);
     }
 }
