@@ -15,7 +15,6 @@ class DefaultController extends AbstractController
         /* dump($checklist); */
         return $this->render('default/homepage.html.twig',  [
             "checklists" => $checklists,
-            /*$this->addFlash('successchecklist', 'Votre liste est transmise !');*/
         ]);
     }
 

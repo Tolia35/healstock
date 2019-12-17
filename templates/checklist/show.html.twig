@@ -4,85 +4,85 @@
 
 {% block body %} {# details list #}
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
 
-                <h3>Liste N°{{ checklist.id }}</h3>
-                <p> Demandeur : {{ checklist.nursename }} <br>
-                    Date de création : {{ checklist.createtime|date('d/m/Y') }}
-                </p>
-                <hr>
-                {% if app.user %}
-                    <div>
-                        <label style="padding-left: 342px">
-                            <strong>Cocher</strong>
-                            <input type=checkbox name=push_notifications value=push_checkAll>
-                        </label>
-                    <br>
-                {% endif %}
-                {% for checklistItem in checklist.checklistItems|reverse %} {# loop items of the list #}
-                <div class="row">
-                    <div class="col-1">
-                    </div>
-                    <div class="col-9" style="background-color: lightblue">
-                        <em style="font-weight: bold; font-size: 20px"><img src="/healstock/node_modules/bootstrap-icons/icons/tag-fill.svg" width="25" height="25" title="tag"> {{ checklistItem.item.reference }}</em>
-                    </div>
-                        <div class="col-1" style="background-color: lightblue; padding-left: 2px">
-                            {% if app.user %}{# checkbox needed to cloture item #}
-                                <label>
-                                    <input type=checkbox name=push_notifications value=push_specialOffers>
-                                </label>
-                            {% endif %}
-                         </div>
-                    <div class="col-1">
-                    </div>
+    <h3>Liste N°{{ checklist.id }}</h3>
+    <p> Demandeur : {{ checklist.nursename }} <br>
+        Date de création : {{ checklist.createtime|date('d/m/Y') }}
+    </p>
+    <hr>
+    <form action="{{ path('checklistitem_update', {'id': checklist.id}) }}" method="POST">
+        {% if app.user %}
+            <label style="padding-left: 342px">
+                <strong>Cocher</strong>
+                <input type=checkbox name=push_notifications value=push_checkAll>
+            </label>
+            <br>
+        {% endif %}
+        {% for checklistItem in checklist.checklistItems|reverse %} {# loop items of the list #}
+            <div class="row">
+                <div class="col-1">
                 </div>
-                    <div class="row">
-                        <div class="col-2">
-                        </div>
-                        <div class="col-9" style="background-color: white">
-                            <em> - {{ checklistItem.item.information }}</em>
-                        </div>
-                    </div>
-                    <br>
+                <div class="col-9" style="background-color: lightblue">
+                    <em style="font-weight: bold; font-size: 20px"><img src="/healstock/node_modules/bootstrap-icons/icons/tag-fill.svg" width="25" height="25" title="tag"> {{ checklistItem.item.reference }}</em>
+                </div>
+                <div class="col-1" style="background-color: lightblue; padding-left: 2px">
+                    {% if app.user %}{# checkbox needed to cloture item #}
+                        <label>
+                            <input type="checkbox" name="ids[]" value="{{ checklistItem.id }}" {% if checklistItem.isClosed %}checked disabled{% endif %}>
+                        </label>
+                    {% endif %}
+                </div>
+                <div class="col-1">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                </div>
+                <div class="col-9" style="background-color: white">
+                    <em> - {{ checklistItem.item.information }}</em>
+                </div>
+            </div>
+            <br>
         {% endfor %}
         <div class="col-1">
         </div>
-{%  if app.user %}
-    <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4">
-            <button type="submit" class="btn btn-primary btn-md btn-block">
-                <a style="color: white"href="{{ path('checklistitem_update', {'id': checklist.id}) }})}}">Cloturer les éléments cochés</a>
-            </button>
-{% endif %}
-        </div>
-            <div class="col-md-4">
+        {%  if app.user %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary btn-md btn-block" style="color: white">
+                        Cloturer les éléments cochés
+                    </button>
+                    {% endif %}
+                </div>
+                <div class="col-md-4">
+                </div>
             </div>
-    </div>
-    </div>
+        </div>
 
-            </div>
+    </form>
 
     <script>
         var input = document.querySelector('[value="push_checkAll"]');
         input.addEventListener('change',checkAll),
             label = input.parentNode.querySelector('strong')
         function checkAll(e){
-            var checkboxes = document.querySelectorAll('[value^="push_"]');
+            var checkboxes = document.querySelectorAll('[name^="ids"]');
             if (checkboxes[0].checked == true){
                 checkboxes[0].checked == false
                 // select all
-                for (i=0;i<checkboxes.length;i++){
+                for (let i=0;i<checkboxes.length;i++){
                     checkboxes[i].checked = true
                 }
             } else {
                 // deselect all
-                for (i=0;i<checkboxes.length;i++){
+                for (let i=0;i<checkboxes.length;i++){
                     checkboxes[i].checked = false
                 }
             }

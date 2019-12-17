@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('checklistitem_delete', {'id': checklistItem.id}) }}" onsubmit="return confirm('Merci de confirmer la suppression');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ checklistItem.id) }}">
+    <button class="btn"><img src="/healstock/node_modules/bootstrap-icons/icons/trash.svg" width="25" height="25" title="supprimer"></button>
+</form>

@@ -50,9 +50,9 @@ class ChecklistItemController extends AbstractController
     }
 
     /**
-     * @Route("/checklist/shownew/{id}", name="checklistitem_delete", methods={"DELETE"})
+     * @Route("/checklistitem/delete/{id}", name="checklistitem_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Checklistitem $checklistitem): Response
+    public function delete(Request $request, Checklistitem $checklistitem)
     {
         if ($this->isCsrfTokenValid('delete'.$checklistitem->getId(), $request->request->get('_token'))) {
             $this->addFlash('successdelete', 'Votre produit est supprimé !');
@@ -60,27 +60,25 @@ class ChecklistItemController extends AbstractController
             $entityManager->remove($checklistitem);
             $entityManager->flush();
         }
-        return $this->redirectToRoute('checklist_show_new');
+        return $this->redirectToRoute('checklist_show_new', ['id' => $checklistitem->getChecklist()->getId()]);
     }
 
 
 
     /**
-     * @Route("/checklist/{id}", name="checklistitem_update", methods={"GET", "POST"})
+     * @Route("/checklist/update/{id}", name="checklistitem_update", methods={"GET", "POST"})
      */
-    public function edit(Checklistitem $checklistitem, Request $request)
+    public function edit(Checklist $checklist, Request $request)
     {
-        $form = $this->createForm(ChecklistitemType::class, $checklistitem);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($checklistitem);
-            $em->flush();
-            return $this->redirectToRoute("checklist/show.html.twig");
+        $entityManager = $this->getDoctrine()->getManager();
+        $ids = $request->request->get("ids");
+        foreach ($ids as $id) {
+            $checklistitem = $entityManager->getRepository(Checklistitem::class)->find($id);
+            $checklistitem->setIsClosed(true);
+            $entityManager->persist($checklistitem);
+            $entityManager->flush();
         }
-        return $this->render('checklist/show.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute("checklist_show", ['id' => $checklist->getId()]);
     }
 }
 

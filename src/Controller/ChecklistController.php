@@ -39,10 +39,12 @@ class ChecklistController extends AbstractController
      */
     public function shownew(Checklist $checklist)
     {
+
         return $this->render('checklist/show.new.html.twig', [
             'checklist' => $checklist
         ]);
     }
+
     /**
      * @Route("/checklist/{id}", name="checklist_show", methods={"GET"})
      */
